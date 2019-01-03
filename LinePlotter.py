@@ -33,6 +33,7 @@ sns.set_context("talk")
 sns.set_palette('Dark2',desat=1)
 cc = sns.color_palette()
 import yaml
+import argparse
 
 
 def lnprior(theta):
@@ -282,8 +283,26 @@ def GetCollapsedLineProperties(x,y,rms,i_final):
 
 
 
+def CreateConfigFile():
+    cmd = "CatalogLines: LineCandidatesPositive.dat\nCubePath: /data2/aspecs/band6/CollapsedCubeBand6/SmoothCube_contsub.fits\nPBpath: /data2/aspecs/band6/UDF_mosaic_1mm.cube.60mhz.pb.fits\nOutputFolder: OutputLinePlot\nLimitInSN: True\nLimitInP: True\nSNLimit: 5.4\nPLimit: 0.1\nColorFitsFile: /data2/aspecs/band6/Cube3/XDF_cube_2d.fits\nColorImage: /data2/aspecs/band6/Cube3/XDF_rgb.png\nSurveyName: ASPECS-LP-1mm\nSaveCollapsedLines: False\nValueAddEachSide: 20\nNwalkers: 100\nNsteps: 100\nParameterForMCMC: 3"
+    output = open('configLinePlot.yaml','w')
+    output.write(cmd)
+    output.close()
+##################################################################################################################
+##################################################################################################################
+##################################################################################################################
 
-######################################################################
+#Parse the input arguments
+parser = argparse.ArgumentParser(description="Python script that plots emission lines candidates")
+parser.add_argument('--CreateConfigFile', action='store_true',required=False,help = 'Create template configuration file')
+
+
+args = parser.parse_args()
+#Checking input arguments
+print 20*'#','Checking inputs....',20*'#'
+if args.CreateConfigFile:
+    CreateConfigFile()
+    print '*** Creating configuration file ***'
 
 ConfigFile = yaml.safe_load(open('configLinePlot.yaml'))
 
