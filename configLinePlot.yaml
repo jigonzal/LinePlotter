@@ -1,0 +1,21 @@
+CatalogLines: LineCandidatesPositive.dat
+CubePath: /data2/aspecs/band6/CollapsedCubeBand6/SmoothCube_contsub.fits
+PBpath: /data2/aspecs/band6/UDF_mosaic_1mm.cube.60mhz.pb.fits
+OutputFolder: OutputLinePlot
+LimitInSN: True
+LimitInP: True
+SNLimit: 5.4
+PLimit: 0.1
+ColorFitsFile: /data2/aspecs/band6/Cube3/XDF_cube_2d.fits
+ColorImage: /data2/aspecs/band6/Cube3/XDF_rgb.png
+SurveyName: ASPECS-LP-1mm
+SaveCollapsedLines: False
+ValueAddEachSide: 20
+Nwalkers: 100
+Nsteps: 100
+ParameterForMCMC: 3
+
+
+
+
+
